@@ -1,138 +1,143 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+/* ——— Fuente dulce ——— */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap');
 
-body {
-  font-family: 'Baloo 2', cursive, 'Comic Sans MS', cursive, sans-serif;
-  background: linear-gradient(135deg, #fce7f3 0%, #e1d4f5 100%);
-  margin: 0;
-  padding: 20px;
-  color: #5e3b6a;
-  overflow-x: auto; /* Para scroll horizontal si es necesario */
+/* ——— Estilo global ——— */
+:root {
+  --rosa-claro: #ffe6f0;
+  --rosa-medio: #ffb6d9;
+  --rosa-fuerte: #ff77b7;
+  --rosa-oscuro: #c7548d;
+  --texto: #5a2947;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Baloo 2', cursive, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--rosa-claro), var(--rosa-medio));
+  color: var(--texto);
+  overflow-x: auto;             /* por si las columnas necesitan scroll */
+}
+
+/* ——— Título principal ——— */
 h1 {
   text-align: center;
-  color: #d87cc2;
   font-size: 3rem;
   margin-bottom: 40px;
-  text-shadow: 1px 1px 6px #f7a1d6;
+  color: var(--rosa-oscuro);
+  text-shadow: 1px 1px 6px var(--rosa-fuerte);
   user-select: none;
 }
 
-/* Contenedor con columnas horizontales */
+/* ——— Contenedor general (flex horizontal de columnas‑semestre) ——— */
 #malla {
   display: flex;
   gap: 40px;
-  max-width: 100vw;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
-/* Cada semestre es una columna */
+/* ——— Columna de semestre ——— */
 .semestre {
-  border: 3px solid #e3a5d6;
-  border-radius: 25px;
-  padding: 15px 20px;
-  background-color: #fdf6fb;
-  box-shadow:
-    0 8px 15px rgba(237, 182, 223, 0.5),
-    inset 0 0 20px #f9e1f7;
   min-width: 250px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
+  border: 3px solid var(--rosa-fuerte);
+  border-radius: 24px;
+  background: var(--rosa-claro);
+  box-shadow: 0 8px 16px rgba(255, 119, 183, 0.35),
+              inset 0 0 20px rgba(255, 182, 217, 0.55);
+  padding: 18px 22px;
 }
 
-/* Título semestre centrado */
+/* ——— Encabezado de semestre ——— */
 .semestre h2 {
-  color: #a449a3;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
   text-align: center;
-  text-shadow: 1px 1px 3px #eeb7e9;
-  user-select: none;
+  font-size: 1.8rem;
+  margin: 0 0 18px;
+  color: var(--rosa-oscuro);
+  text-shadow: 1px 1px 4px var(--rosa-fuerte);
   flex-shrink: 0;
 }
 
-/* Contenedor ramos, que tome todo el alto y haga scroll vertical */
+/* ——— Grilla vertical de ramos dentro de la columna ——— */
 .ramos {
-  overflow-y: auto;
   flex-grow: 1;
+  overflow-y: auto;
   display: grid;
-  grid-template-columns: 1fr;
   gap: 15px;
-  padding-right: 6px; /* espacio para scrollbar */
 }
 
-/* Ramos estilo kawaii */
+/* ——— Tarjeta de ramo ——— */
 .ramo {
-  background-color: #f8d7fb;
-  border: 3px solid #d48ee2;
-  border-radius: 20px;
-  padding: 18px 15px;
-  cursor: pointer;
-  transition: all 0.35s ease;
-  text-align: center;
+  background: var(--rosa-medio);
+  border: 3px solid var(--rosa-fuerte);
+  border-radius: 18px;
+  padding: 14px 12px;
   font-weight: 700;
-  font-size: 1.1rem;
-  box-shadow:
-    0 4px 10px rgba(195, 136, 234, 0.3),
-    inset 0 0 8px #e7b6ff;
-  color: #70307c;
-  white-space: pre-line;
-  user-select: none;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--texto);
+  cursor: pointer;
+  transition: transform 0.25s, background 0.25s, border 0.25s;
+  white-space: pre-line;        /* para que “Nombre\n(CODIGO)” baje de línea */
   position: relative;
   user-select: none;
+  box-shadow: 0 4px 10px rgba(199, 84, 141, 0.25),
+              inset 0 0 10px rgba(255, 182, 217, 0.65);
 }
 
 .ramo:hover {
-  transform: scale(1.08);
-  background-color: #f3bef9;
-  border-color: #bb68d8;
-  box-shadow:
-    0 6px 18px rgba(193, 118, 232, 0.6),
-    inset 0 0 12px #e7a1ff;
+  transform: scale(1.06);
+  background: #ffc4e4;
 }
 
+/* ——— Estado aprobado ——— */
 .ramo.aprobado {
-  background-color: #c7a8f5;
-  border-color: #875de1;
-  color: #422c6a;
+  background: #ffd4ec;
+  border-color: var(--rosa-oscuro);
+  color: #73506b;
   text-decoration: line-through;
   cursor: default;
-  box-shadow:
-    0 6px 15px #ab81ee,
-    inset 0 0 10px #a37ae0;
+  box-shadow: 0 6px 14px rgba(199, 84, 141, 0.4),
+              inset 0 0 12px rgba(255, 214, 236, 0.8);
 }
 
-/* Iconito kawaii check */
+/* ✔ iconito kawaii cuando se aprueba */
 .ramo.aprobado::after {
-  content: "✔";
+  content: '✔';
   position: absolute;
-  top: 8px;
-  right: 12px;
+  top: 6px;
+  right: 10px;
   font-size: 1.4rem;
-  color: #6d3fcc;
-  text-shadow:
-    1px 1px 3px #c4a8ff;
-  user-select: none;
+  color: var(--rosa-oscuro);
+  text-shadow: 1px 1px 3px white;
   transform: rotate(-10deg);
 }
 
-#detalle {
-  max-width: 800px;
-  margin: 30px auto 0 auto;
-  padding: 25px 30px;
-  background-color: #fdf6fb;
-  border: 3px solid #e3a5d6;
-  border-radius: 25px;
-  box-shadow:
-    0 10px 25px rgba(233, 187, 238, 0.5),
-    inset 0 0 30px #f8d9ff;
-  color: #6a3a8d;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  user-select: none;
+/* ——— Ramos bloqueados (opacidad + sin clic) ——— */
+.ramo.bloqueado {
+  opacity: 0.35;
+  pointer-events: none;
 }
 
-.hidden {
-  display: none;
+/* ——— Panel de detalle ——— */
+#detalle {
+  max-width: 780px;
+  margin: 30px auto 0;
+  padding: 24px 28px;
+  background: var(--rosa-claro);
+  border: 3px solid var(--rosa-fuerte);
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(255, 119, 183, 0.4),
+              inset 0 0 24px rgba(255, 182, 217, 0.65);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--texto);
 }
+
+.hidden { display: none; }
