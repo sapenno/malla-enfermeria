@@ -1,73 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff0f5;
+  font-family: 'Baloo 2', cursive, 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #fce7f3 0%, #e1d4f5 100%);
   margin: 0;
   padding: 20px;
-  color: #2c003e;
+  color: #5e3b6a;
 }
 
 h1 {
   text-align: center;
-  color: #a83279;
+  color: #d87cc2;
+  font-size: 3rem;
   margin-bottom: 40px;
+  text-shadow: 1px 1px 6px #f7a1d6;
+  user-select: none;
 }
 
 #malla {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .semestre {
-  border: 2px solid #d291bc;
-  border-radius: 12px;
-  padding: 10px 20px;
-  background-color: #ffe0f0;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+  border: 3px solid #e3a5d6;
+  border-radius: 25px;
+  padding: 20px 30px;
+  background-color: #fdf6fb;
+  box-shadow:
+    0 8px 15px rgba(237, 182, 223, 0.5),
+    inset 0 0 20px #f9e1f7;
+  transition: background-color 0.3s ease;
+}
+
+.semestre:hover {
+  background-color: #fae9fc;
 }
 
 .semestre h2 {
-  color: #7b2cbf;
-  margin-bottom: 10px;
+  color: #a449a3;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 3px #eeb7e9;
+  user-select: none;
 }
 
 .ramos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
 }
 
 .ramo {
-  background-color: #f7b2d9;
-  border: 2px solid #cc79a7;
-  border-radius: 10px;
-  padding: 12px;
+  background-color: #f8d7fb;
+  border: 3px solid #d48ee2;
+  border-radius: 20px;
+  padding: 18px 15px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   text-align: center;
-  font-weight: bold;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow:
+    0 4px 10px rgba(195, 136, 234, 0.3),
+    inset 0 0 8px #e7b6ff;
+  color: #70307c;
   white-space: pre-line;
+  user-select: none;
+  position: relative;
 }
 
 .ramo:hover {
-  transform: scale(1.05);
-  background-color: #f08fc0;
+  transform: scale(1.08);
+  background-color: #f3bef9;
+  border-color: #bb68d8;
+  box-shadow:
+    0 6px 18px rgba(193, 118, 232, 0.6),
+    inset 0 0 12px #e7a1ff;
 }
 
 .ramo.aprobado {
-  background-color: #d2b3e9;
-  border-color: #a259ff;
+  background-color: #c7a8f5;
+  border-color: #875de1;
+  color: #422c6a;
   text-decoration: line-through;
-  color: #555;
+  cursor: default;
+  box-shadow:
+    0 6px 15px #ab81ee,
+    inset 0 0 10px #a37ae0;
 }
 
+/* Iconito kawaii check en esquina */
+
+.ramo.aprobado::after {
+  content: "✔";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.4rem;
+  color: #6d3fcc;
+  text-shadow:
+    1px 1px 3px #c4a8ff;
+  user-select: none;
+  transform: rotate(-10deg);
+}
+
+/* Detalle info panel */
+
 #detalle {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #fafafa;
-  border: 2px solid #dda0dd;
-  border-radius: 10px;
+  max-width: 800px;
+  margin: 30px auto 0 auto;
+  padding: 25px 30px;
+  background-color: #fdf6fb;
+  border: 3px solid #e3a5d6;
+  border-radius: 25px;
+  box-shadow:
+    0 10px 25px rgba(233, 187, 238, 0.5),
+    inset 0 0 30px #f8d9ff;
+  color: #6a3a8d;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  user-select: none;
 }
 
 .hidden {
