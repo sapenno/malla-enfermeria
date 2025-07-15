@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 20px;
   color: #5e3b6a;
+  overflow-x: auto; /* Para scroll horizontal si es necesario */
 }
 
 h1 {
@@ -17,44 +18,51 @@ h1 {
   user-select: none;
 }
 
+/* Contenedor con columnas horizontales */
 #malla {
   display: flex;
-  flex-direction: column;
   gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 100vw;
+  padding-bottom: 20px;
 }
 
+/* Cada semestre es una columna */
 .semestre {
   border: 3px solid #e3a5d6;
   border-radius: 25px;
-  padding: 20px 30px;
+  padding: 15px 20px;
   background-color: #fdf6fb;
   box-shadow:
     0 8px 15px rgba(237, 182, 223, 0.5),
     inset 0 0 20px #f9e1f7;
-  transition: background-color 0.3s ease;
+  min-width: 250px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.semestre:hover {
-  background-color: #fae9fc;
-}
-
+/* Título semestre centrado */
 .semestre h2 {
   color: #a449a3;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 20px;
   text-align: center;
   text-shadow: 1px 1px 3px #eeb7e9;
   user-select: none;
+  flex-shrink: 0;
 }
 
+/* Contenedor ramos, que tome todo el alto y haga scroll vertical */
 .ramos {
+  overflow-y: auto;
+  flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  padding-right: 6px; /* espacio para scrollbar */
 }
 
+/* Ramos estilo kawaii */
 .ramo {
   background-color: #f8d7fb;
   border: 3px solid #d48ee2;
@@ -72,6 +80,7 @@ h1 {
   white-space: pre-line;
   user-select: none;
   position: relative;
+  user-select: none;
 }
 
 .ramo:hover {
@@ -94,8 +103,7 @@ h1 {
     inset 0 0 10px #a37ae0;
 }
 
-/* Iconito kawaii check en esquina */
-
+/* Iconito kawaii check */
 .ramo.aprobado::after {
   content: "✔";
   position: absolute;
@@ -108,8 +116,6 @@ h1 {
   user-select: none;
   transform: rotate(-10deg);
 }
-
-/* Detalle info panel */
 
 #detalle {
   max-width: 800px;
@@ -124,9 +130,4 @@ h1 {
   color: #6a3a8d;
   font-size: 1.2rem;
   line-height: 1.5;
-  user-select: none;
-}
-
-.hidden {
-  display: none;
-}
+  user-select: none
