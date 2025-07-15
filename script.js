@@ -75,37 +75,82 @@ const ramosPorSemestre = {
 
 const malla = document.getElementById("malla");
 const detalle = document.getElementById("detalle");
-let aprobados = new Set();
 
-function getPrerequisitos(codigo) {
+let aprobados = new Set();
+let desbloqueados = new Set();
+
+// Inicializamos los desbloqueados con los ramos sin prerrequisitos
+function inicializarDesbloqueados() {
+  desbloqueados.clear();
   for (const semestre in ramosPorSemestre) {
-    for (const [nombre, cod, prereqs] of ramosPorSemestre[semestre]) {
-      if (cod === codigo) return prereqs;
+    for (const [nombre, codigo, prereqs] of ramosPorSemestre[semestre]) {
+      if (prereqs.length === 0) {
+        desbloqueados.add(codigo);
+      }
     }
   }
-  return [];
+}
+
+// Verifica si todos los prerrequisitos están aprobados
+function prerrequisitosAprobados(prereqs) {
+  return prereqs.every(p => aprobados.has(p));
+}
+
+// Cuando apruebas un ramo, desbloquea los que dependen de él
+function actualizarDesbloqueados() {
+  let cambio = false;
+  for (const semestre in ramosPorSemestre) {
+    for (const [nombre, codigo, prereqs] of ramosPorSemestre[semestre]) {
+      if (!desbloqueados.has(codigo)) {
+        if (prerrequisitosAprobados(prereqs)) {
+          desbloqueados.add(codigo);
+          cambio = true;
+        }
+      }
+    }
+  }
+  // Si se desbloquearon nuevos ramos, intentar actualizar otra vez para cadena
+  if (cambio) actualizarDesbloqueados();
 }
 
 function crearTarjeta(nombre, codigo) {
   const div = document.createElement("div");
   div.className = "ramo";
-  if (aprobados.has(codigo)) div.classList.add("aprobado");
+
+  if (!desbloqueados.has(codigo)) {
+    div.style.display = "none";
+  }
+  
+  if (aprobados.has(codigo)) {
+    div.classList.add("aprobado");
+  }
   div.textContent = `${nombre}\n(${codigo})`;
   div.addEventListener("click", () => {
-    const prereqs = getPrerequisitos(codigo);
-    if (!aprobados.has(codigo) && prereqs.every(p => aprobados.has(p) || p.includes("semestre"))) {
+    if (desbloqueados.has(codigo) && !aprobados.has(codigo)) {
       aprobados.add(codigo);
+      actualizarDesbloqueados();
       actualizarMalla();
     }
     detalle.classList.remove("hidden");
     detalle.innerHTML = `
       <h2>${nombre}</h2>
       <p><strong>Código:</strong> ${codigo}</p>
-      <p><strong>Prerrequisitos:</strong> ${prereqs.join(", ") || "Ninguno"}</p>
+      <p><strong>Prerrequisitos:</strong> ${prereqText(codigo)}</p>
       <p><strong>Estado:</strong> ${aprobados.has(codigo) ? "✅ Aprobado" : "⏳ Pendiente"}</p>
     `;
   });
   return div;
+}
+
+function prereqText(codigo) {
+  for (const semestre in ramosPorSemestre) {
+    for (const [nombre, cod, prereqs] of ramosPorSemestre[semestre]) {
+      if (cod === codigo) {
+        return prereqs.length ? prereqs.join(", ") : "Ninguno";
+      }
+    }
+  }
+  return "Ninguno";
 }
 
 function actualizarMalla() {
@@ -119,8 +164,10 @@ function actualizarMalla() {
 
     const grid = document.createElement("div");
     grid.className = "ramos";
+
     for (const [nombre, codigo] of ramosPorSemestre[semestre]) {
-      grid.appendChild(crearTarjeta(nombre, codigo));
+      const tarjeta = crearTarjeta(nombre, codigo);
+      grid.appendChild(tarjeta);
     }
 
     container.appendChild(grid);
@@ -128,4 +175,6 @@ function actualizarMalla() {
   }
 }
 
+// Inicializar al cargar la página
+inicializarDesbloqueados();
 actualizarMalla();
