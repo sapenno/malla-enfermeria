@@ -130,4 +130,9 @@ h1 {
   color: #6a3a8d;
   font-size: 1.2rem;
   line-height: 1.5;
-  user-select: none
+  user-select: none;
+}
+
+.hidden {
+  display: none;
+}
