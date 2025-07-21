@@ -4,26 +4,44 @@ async function cargarMalla() {
   const res = await fetch('malla.json');
   const data = await res.json();
   const contenedor = document.getElementById('malla-container');
+
+  const anios = {};
+
   data.mallaData.forEach((bloque) => {
-    if (bloque.materias.length > 0) {
-      const div = document.createElement('div');
-      div.className = 'semestre';
-      div.innerHTML = `<h2>${bloque.año}° Año - ${bloque.periodo}</h2>`;
-      bloque.materias.forEach((materia) => {
-        const matDiv = document.createElement('div');
-        matDiv.className = 'materia';
-        matDiv.textContent = materia.nombre;
-        matDiv.dataset.id = materia.id;
-        matDiv.onclick = () => toggleMateria(materia);
-        if (materiasCompletadas.includes(materia.id)) {
-          matDiv.classList.add('completed');
-        }
-        if (materia.requisitos.length === 0 || materia.requisitos.every(req => materiasCompletadas.includes(req))) {
-          div.appendChild(matDiv);
-        }
-      });
-      contenedor.appendChild(div);
+    if (!anios[bloque.año]) {
+      anios[bloque.año] = [];
     }
+    anios[bloque.año].push(bloque);
+  });
+
+  Object.keys(anios).forEach((anio) => {
+    const columna = document.createElement('div');
+    columna.className = 'anio';
+    columna.innerHTML = `<h3>${anio}° Año</h3>`;
+
+    anios[anio].forEach((bloque) => {
+      if (bloque.materias.length > 0) {
+        const div = document.createElement('div');
+        div.className = 'semestre';
+        div.innerHTML = `<h2>${bloque.periodo}</h2>`;
+        bloque.materias.forEach((materia) => {
+          const matDiv = document.createElement('div');
+          matDiv.className = 'materia';
+          matDiv.textContent = materia.nombre;
+          matDiv.dataset.id = materia.id;
+          matDiv.onclick = () => toggleMateria(materia);
+          if (materiasCompletadas.includes(materia.id)) {
+            matDiv.classList.add('completed');
+          }
+          if (materia.requisitos.length === 0 || materia.requisitos.every(req => materiasCompletadas.includes(req))) {
+            div.appendChild(matDiv);
+          }
+        });
+        columna.appendChild(div);
+      }
+    });
+
+    contenedor.appendChild(columna);
   });
 }
 
