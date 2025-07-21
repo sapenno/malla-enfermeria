@@ -5,6 +5,14 @@ async function cargarMalla() {
   const data = await res.json();
   const contenedor = document.getElementById('malla-container');
 
+  // Mapa para mostrar nombres de los requisitos
+  const idToNombre = {};
+  data.mallaData.forEach(bloque =>
+    bloque.materias.forEach(m =>
+      idToNombre[m.id] = m.nombre
+    )
+  );
+
   const anios = {};
 
   data.mallaData.forEach((bloque) => {
@@ -37,7 +45,12 @@ async function cargarMalla() {
                              materia.requisitos.every(req => materiasCompletadas.includes(req));
 
           if (completada) matDiv.classList.add('completed');
-          if (!habilitada && !completada) matDiv.classList.add('disabled');
+          if (!habilitada && !completada) {
+            matDiv.classList.add('disabled');
+
+            const requisitosNombres = materia.requisitos.map(id => idToNombre[id]).join(', ');
+            matDiv.title = "Requiere: " + requisitosNombres;
+          }
 
           div.appendChild(matDiv);
         });
