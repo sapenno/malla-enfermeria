@@ -1,5 +1,3 @@
-// script.js
-
 let malla = [];
 let materiasPorId = {};
 let completadas = JSON.parse(localStorage.getItem("materiasCompletadas") || "[]");
@@ -9,7 +7,7 @@ async function cargarMalla() {
   const data = await res.json();
   malla = data.mallaData;
 
-  // Indexar materias por ID
+  // Mapear materias por ID
   malla.forEach(periodo => {
     periodo.materias.forEach(m => {
       materiasPorId[m.id] = m;
@@ -54,6 +52,9 @@ function renderMalla() {
     anioDiv.className = "anio";
     anioDiv.innerHTML = `<h2>Año ${anio}</h2>`;
 
+    const filaPeriodos = document.createElement("div");
+    filaPeriodos.className = "periodos";
+
     const periodos = malla.filter(p => p.año === anio && p.materias.length > 0);
     periodos.forEach(p => {
       const periodoDiv = document.createElement("div");
@@ -80,9 +81,10 @@ function renderMalla() {
         periodoDiv.appendChild(div);
       });
 
-      anioDiv.appendChild(periodoDiv);
+      filaPeriodos.appendChild(periodoDiv);
     });
 
+    anioDiv.appendChild(filaPeriodos);
     container.appendChild(anioDiv);
   });
 }
