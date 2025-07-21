@@ -1,119 +1,94 @@
-/* style.css */
-
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #e6e0f8, #d8f0ff);
+  background: linear-gradient(to bottom, #f7f0ff, #e6faff);
   margin: 0;
   padding: 0;
-  color: #333;
-  overflow-x: auto;
+  color: #3a3a3a;
 }
 
-header.header-vertical {
+header {
+  background: linear-gradient(120deg, #cdbbff, #a3e9ff);
+  color: #4a4a4a;
+  padding: 1.5rem;
   text-align: center;
-  background: linear-gradient(to right, #d6bbf7, #bae6fd);
-  color: #3a3a3a;
-  padding: 2rem 1rem 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-bottom: 3px solid #e0c3fc;
 }
 
 .logo {
-  max-height: 90px;
+  width: 80px;
   margin-bottom: 1rem;
 }
 
-h1 {
-  margin: 0.25rem 0;
-  font-size: 2rem;
-  color: #4b3b87;
+.instruccion {
+  font-size: 0.9rem;
+  color: #555;
 }
 
-main.horizontal-layout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+main {
+  max-width: 100%;
+  padding: 2rem;
   overflow-x: auto;
-  padding: 1rem;
-  gap: 1.5rem;
 }
 
 .anio {
-  min-width: 280px;
-  background-color: #faf5ff;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  padding: 1rem;
-  flex-shrink: 0;
-  border: 2px dashed #c084fc;
+  margin-bottom: 3rem;
 }
 
 .anio h2 {
-  text-align: center;
-  color: #7c3aed;
+  color: #764ba2;
+  margin-bottom: 1rem;
+}
+
+.periodos {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
 }
 
 .periodo {
-  background: #ede9fe;
-  margin: 1rem 0;
-  padding: 0.75rem;
-  border-left: 5px solid #a78bfa;
-  border-radius: 0.5rem;
+  min-width: 280px;
+  background: #f0f4ff;
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 6px solid #a8d0ff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+}
+
+.periodo h3 {
+  margin-top: 0;
+  color: #4b70a2;
 }
 
 .materia {
   background: white;
-  margin: 0.4rem 0;
-  padding: 0.6rem 1rem;
-  border-left: 5px solid #c4b5fd;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 5px solid #c3baff;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .materia:hover {
-  background: #f0f9ff;
-  border-left-color: #7dd3fc;
   transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(190, 220, 255, 0.4);
 }
 
 .materia.locked {
   opacity: 0.5;
   cursor: not-allowed;
-  border-left-color: #ddd6fe;
-  background: #f3f4f6;
+  background: #f9f9f9;
+  border-left-color: #ccc;
 }
 
 .materia.completed {
   text-decoration: line-through;
-  background: #d1fae5;
-  border-left-color: #34d399;
-  color: #065f46;
+  background: #dcffe6;
+  border-left-color: #6fdc95;
 }
 
-.materia:hover::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  left: 105%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fce7f3;
-  color: #4b5563;
-  padding: 0.5rem;
-  border-radius: 6px;
-  white-space: pre-wrap;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
-  z-index: 10;
-  width: 200px;
-  font-size: 0.85rem;
-}
-
-footer {
-  text-align: center;
-  background: #e0f2fe;
-  color: #6b21a8;
-  padding: 1rem;
-  font-weight: bold;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
-}
+.mater
