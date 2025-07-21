@@ -1,143 +1,41 @@
-/* ——— Fuente dulce ——— */
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap');
-
-/* ——— Estilo global ——— */
-:root {
-  --rosa-claro: #ffe6f0;
-  --rosa-medio: #ffb6d9;
-  --rosa-fuerte: #ff77b7;
-  --rosa-oscuro: #c7548d;
-  --texto: #5a2947;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Baloo 2', cursive, sans-serif;
+  font-family: Arial, sans-serif;
+  background: #f7f9fb;
   margin: 0;
-  padding: 20px;
-  background: linear-gradient(135deg, var(--rosa-claro), var(--rosa-medio));
-  color: var(--texto);
-  overflow-x: auto;             /* por si las columnas necesitan scroll */
+  padding: 0;
+  color: #333;
 }
 
-/* ——— Título principal ——— */
-h1 {
+header {
+  background-color: #00558c;
+  color: white;
+  padding: 1rem;
   text-align: center;
-  font-size: 3rem;
-  margin-bottom: 40px;
-  color: var(--rosa-oscuro);
-  text-shadow: 1px 1px 6px var(--rosa-fuerte);
-  user-select: none;
 }
 
-/* ——— Contenedor general (flex horizontal de columnas‑semestre) ——— */
-#malla {
-  display: flex;
-  gap: 40px;
-  padding-bottom: 30px;
-}
-
-/* ——— Columna de semestre ——— */
-.semestre {
-  min-width: 250px;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  border: 3px solid var(--rosa-fuerte);
-  border-radius: 24px;
-  background: var(--rosa-claro);
-  box-shadow: 0 8px 16px rgba(255, 119, 183, 0.35),
-              inset 0 0 20px rgba(255, 182, 217, 0.55);
-  padding: 18px 22px;
-}
-
-/* ——— Encabezado de semestre ——— */
-.semestre h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin: 0 0 18px;
-  color: var(--rosa-oscuro);
-  text-shadow: 1px 1px 4px var(--rosa-fuerte);
-  flex-shrink: 0;
-}
-
-/* ——— Grilla vertical de ramos dentro de la columna ——— */
-.ramos {
-  flex-grow: 1;
-  overflow-y: auto;
-  display: grid;
-  gap: 15px;
-}
-
-/* ——— Tarjeta de ramo ——— */
-.ramo {
-  background: var(--rosa-medio);
-  border: 3px solid var(--rosa-fuerte);
-  border-radius: 18px;
-  padding: 14px 12px;
-  font-weight: 700;
+select {
+  margin-top: 1rem;
+  padding: 0.5rem;
   font-size: 1rem;
-  text-align: center;
-  color: var(--texto);
-  cursor: pointer;
-  transition: transform 0.25s, background 0.25s, border 0.25s;
-  white-space: pre-line;        /* para que “Nombre\n(CODIGO)” baje de línea */
-  position: relative;
-  user-select: none;
-  box-shadow: 0 4px 10px rgba(199, 84, 141, 0.25),
-              inset 0 0 10px rgba(255, 182, 217, 0.65);
 }
 
-.ramo:hover {
-  transform: scale(1.06);
-  background: #ffc4e4;
+#mallaContainer {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
 }
 
-/* ——— Estado aprobado ——— */
-.ramo.aprobado {
-  background: #ffd4ec;
-  border-color: var(--rosa-oscuro);
-  color: #73506b;
-  text-decoration: line-through;
-  cursor: default;
-  box-shadow: 0 6px 14px rgba(199, 84, 141, 0.4),
-              inset 0 0 12px rgba(255, 214, 236, 0.8);
+.periodo {
+  background-color: #ddeeff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-left: 5px solid #00558c;
 }
 
-/* ✔ iconito kawaii cuando se aprueba */
-.ramo.aprobado::after {
-  content: '✔';
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  font-size: 1.4rem;
-  color: var(--rosa-oscuro);
-  text-shadow: 1px 1px 3px white;
-  transform: rotate(-10deg);
+.materia {
+  background-color: white;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid #0099cc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
-/* ——— Ramos bloqueados (opacidad + sin clic) ——— */
-.ramo.bloqueado {
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-/* ——— Panel de detalle ——— */
-#detalle {
-  max-width: 780px;
-  margin: 30px auto 0;
-  padding: 24px 28px;
-  background: var(--rosa-claro);
-  border: 3px solid var(--rosa-fuerte);
-  border-radius: 24px;
-  box-shadow: 0 10px 24px rgba(255, 119, 183, 0.4),
-              inset 0 0 24px rgba(255, 182, 217, 0.65);
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: var(--texto);
-}
-
-.hidden { display: none; }
