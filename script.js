@@ -1,46 +1,81 @@
-let mallaData = [];
-let estructuraPorAnio = [];
+let malla = [];
+let materiasPorId = {};
+let completadas = JSON.parse(localStorage.getItem("materiasCompletadas") || "[]");
 
 async function cargarMalla() {
   const res = await fetch('malla.json');
   const data = await res.json();
-  mallaData = data.mallaData;
-  estructuraPorAnio = data.estructuraPorAnio;
-  poblarAnios(data.cantidadAnios);
+  malla = data.mallaData;
+
+  // Mapear materias por ID
+  malla.forEach(periodo => {
+    periodo.materias.forEach(m => {
+      materiasPorId[m.id] = m;
+    });
+  });
+
+  renderMalla();
 }
 
-function poblarAnios(cantidad) {
-  const select = document.getElementById("selectAnio");
-  for (let i = 1; i <= cantidad; i++) {
-    const option = document.createElement("option");
-    option.value = i;
-    option.textContent = `Año ${i}`;
-    select.appendChild(option);
+function guardarProgreso() {
+  localStorage.setItem("materiasCompletadas", JSON.stringify(completadas));
+}
+
+function estaDesbloqueada(materia) {
+  return materia.requisitos.every(reqId => completadas.includes(reqId));
+}
+
+function toggleMateria(id) {
+  const index = completadas.indexOf(id);
+  if (index >= 0) {
+    completadas.splice(index, 1);
+  } else {
+    completadas.push(id);
   }
-  select.addEventListener("change", (e) => mostrarMallaPorAnio(e.target.value));
+  guardarProgreso();
+  renderMalla();
 }
 
-function mostrarMallaPorAnio(anioSeleccionado) {
+function renderMalla() {
   const container = document.getElementById("mallaContainer");
-  container.innerHTML = '';
+  container.innerHTML = "";
 
-  const periodos = mallaData.filter((e) => e.año == anioSeleccionado && e.materias.length > 0);
-  periodos.forEach(periodo => {
-    const divPeriodo = document.createElement("div");
-    divPeriodo.className = "periodo";
-    divPeriodo.innerHTML = `<h3>${periodo.periodo}</h3>`;
+  const años = [...new Set(malla.map(e => e.año))];
 
-    periodo.materias.forEach(materia => {
-      const divMateria = document.createElement("div");
-      divMateria.className = "materia";
-      divMateria.innerHTML = `
-        <strong>${materia.nombre}</strong> (${materia.creditos} créditos)<br/>
-        ${materia.requisitos.length > 0 ? "<em>Requiere:</em> " + materia.requisitos.length + " asignatura(s)" : "<em>Sin requisitos</em>"}
-      `;
-      divPeriodo.appendChild(divMateria);
+  años.forEach(anio => {
+    const anioDiv = document.createElement("div");
+    anioDiv.className = "anio";
+    anioDiv.innerHTML = `<h2>Año ${anio}</h2>`;
+
+    const periodos = malla.filter(p => p.año === anio && p.materias.length > 0);
+    periodos.forEach(p => {
+      const periodoDiv = document.createElement("div");
+      periodoDiv.className = "periodo";
+      periodoDiv.innerHTML = `<h3>${p.periodo}</h3>`;
+
+      p.materias.forEach(m => {
+        const materiaDiv = document.createElement("div");
+        materiaDiv.className = "materia";
+        materiaDiv.textContent = `${m.nombre} (${m.creditos} créditos)`;
+
+        const completada = completadas.includes(m.id);
+        const desbloqueada = estaDesbloqueada(m);
+
+        if (completada) {
+          materiaDiv.classList.add("completed");
+        } else if (!desbloqueada && m.requisitos.length > 0) {
+          materiaDiv.classList.add("locked");
+        } else {
+          materiaDiv.addEventListener("click", () => toggleMateria(m.id));
+        }
+
+        periodoDiv.appendChild(materiaDiv);
+      });
+
+      anioDiv.appendChild(periodoDiv);
     });
 
-    container.appendChild(divPeriodo);
+    container.appendChild(anioDiv);
   });
 }
 
