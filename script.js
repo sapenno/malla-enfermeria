@@ -24,22 +24,24 @@ async function cargarMalla() {
         const div = document.createElement('div');
         div.className = 'semestre';
         div.innerHTML = `<h2>${bloque.periodo}</h2>`;
+
         bloque.materias.forEach((materia) => {
           const matDiv = document.createElement('div');
           matDiv.className = 'materia';
           matDiv.textContent = materia.nombre;
           matDiv.dataset.id = materia.id;
           matDiv.onclick = () => toggleMateria(materia);
-          if (materiasCompletadas.includes(materia.id)) {
-            matDiv.classList.add('completed');
-          }
-          if (
-            materia.requisitos.length === 0 ||
-            materia.requisitos.every((req) => materiasCompletadas.includes(req))
-          ) {
-            div.appendChild(matDiv);
-          }
+
+          const completada = materiasCompletadas.includes(materia.id);
+          const habilitada = materia.requisitos.length === 0 ||
+                             materia.requisitos.every(req => materiasCompletadas.includes(req));
+
+          if (completada) matDiv.classList.add('completed');
+          if (!habilitada && !completada) matDiv.classList.add('disabled');
+
+          div.appendChild(matDiv);
         });
+
         columna.appendChild(div);
       }
     });
