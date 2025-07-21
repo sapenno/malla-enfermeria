@@ -1,94 +1,58 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #f7f0ff, #e6faff);
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: #3a3a3a;
+  background: #f9f9f9;
+  color: #333;
 }
 
-header {
-  background: linear-gradient(120deg, #cdbbff, #a3e9ff);
-  color: #4a4a4a;
-  padding: 1.5rem;
+h1 {
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-bottom: 3px solid #e0c3fc;
-}
-
-.logo {
-  width: 80px;
-  margin-bottom: 1rem;
-}
-
-.instruccion {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-main {
-  max-width: 100%;
-  padding: 2rem;
-  overflow-x: auto;
-}
-
-.anio {
-  margin-bottom: 3rem;
-}
-
-.anio h2 {
-  color: #764ba2;
-  margin-bottom: 1rem;
-}
-
-.periodos {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-}
-
-.periodo {
-  min-width: 280px;
-  background: #f0f4ff;
   padding: 1rem;
-  border-radius: 10px;
-  border-left: 6px solid #a8d0ff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  flex-shrink: 0;
+  background-color: #004b87;
+  color: white;
+  margin: 0;
 }
 
-.periodo h3 {
-  margin-top: 0;
-  color: #4b70a2;
+#malla-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.semestre {
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 300px;
+  background: white;
+}
+
+.semestre h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .materia {
-  background: white;
   margin: 0.5rem 0;
-  padding: 0.75rem 1rem;
-  border-left: 5px solid #c3baff;
-  border-radius: 6px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-}
-
-.materia:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 8px rgba(190, 220, 255, 0.4);
-}
-
-.materia.locked {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background: #f9f9f9;
-  border-left-color: #ccc;
 }
 
 .materia.completed {
+  background-color: #cce5ff;
   text-decoration: line-through;
-  background: #dcffe6;
-  border-left-color: #6fdc95;
 }
 
-.mater
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: bold;
+  padding: 1rem;
+  background-color: #eaeaea;
+  border-top: 2px solid #ccc;
+}
