@@ -3,7 +3,7 @@ let materiasPorId = {};
 let completadas = JSON.parse(localStorage.getItem("materiasCompletadas") || "[]");
 
 async function cargarMalla() {
-  const res = await fetch('malla.json');
+  const res = await fetch("malla.json");
   const data = await res.json();
   malla = data.mallaData;
 
@@ -26,14 +26,19 @@ function estaDesbloqueada(materia) {
 }
 
 function toggleMateria(id) {
-  const index = completadas.indexOf(id);
-  if (index >= 0) {
-    completadas.splice(index, 1);
+  const idx = completadas.indexOf(id);
+  if (idx >= 0) {
+    completadas.splice(idx, 1);
   } else {
     completadas.push(id);
   }
   guardarProgreso();
   renderMalla();
+}
+
+function tooltipRequisitos(materia) {
+  if (!materia.requisitos.length) return "Sin requisitos";
+  return "Requiere:\n" + materia.requisitos.map(id => materiasPorId[id]?.nombre || "???").join("\n");
 }
 
 function renderMalla() {
@@ -54,22 +59,23 @@ function renderMalla() {
       periodoDiv.innerHTML = `<h3>${p.periodo}</h3>`;
 
       p.materias.forEach(m => {
-        const materiaDiv = document.createElement("div");
-        materiaDiv.className = "materia";
-        materiaDiv.textContent = `${m.nombre} (${m.creditos} créditos)`;
+        const div = document.createElement("div");
+        div.className = "materia";
+        div.textContent = `${m.nombre} (${m.creditos} créditos)`;
+        div.setAttribute("data-tooltip", tooltipRequisitos(m));
 
         const completada = completadas.includes(m.id);
         const desbloqueada = estaDesbloqueada(m);
 
         if (completada) {
-          materiaDiv.classList.add("completed");
+          div.classList.add("completed");
         } else if (!desbloqueada && m.requisitos.length > 0) {
-          materiaDiv.classList.add("locked");
+          div.classList.add("locked");
         } else {
-          materiaDiv.addEventListener("click", () => toggleMateria(m.id));
+          div.addEventListener("click", () => toggleMateria(m.id));
         }
 
-        periodoDiv.appendChild(materiaDiv);
+        periodoDiv.appendChild(div);
       });
 
       anioDiv.appendChild(periodoDiv);
