@@ -1,41 +1,53 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f7f9fb;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f8fb;
   margin: 0;
   padding: 0;
   color: #333;
 }
 
 header {
-  background-color: #00558c;
+  background-color: #0070c0;
   color: white;
   padding: 1rem;
   text-align: center;
 }
 
-select {
-  margin-top: 1rem;
-  padding: 0.5rem;
-  font-size: 1rem;
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
 }
 
-#mallaContainer {
-  padding: 2rem;
-  max-width: 900px;
-  margin: auto;
+.anio {
+  margin-bottom: 2rem;
 }
 
 .periodo {
-  background-color: #ddeeff;
-  margin-bottom: 1rem;
+  background: #dfeeff;
+  margin: 1rem 0;
   padding: 1rem;
-  border-left: 5px solid #00558c;
+  border-left: 5px solid #0070c0;
 }
 
 .materia {
-  background-color: white;
+  background: white;
   margin: 0.5rem 0;
-  padding: 0.5rem 1rem;
-  border-left: 4px solid #0099cc;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0.75rem 1rem;
+  border-left: 5px solid #66aaff;
+  cursor: pointer;
+  transition: background 0.3s;
+  user-select: none;
+}
+
+.materia.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-left-color: #ccc;
+}
+
+.materia.completed {
+  text-decoration: line-through;
+  background: #e0ffe0;
+  border-left-color: #00aa00;
 }
