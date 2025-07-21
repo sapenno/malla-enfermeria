@@ -1,131 +1,47 @@
-// Datos: [nombre, código, [prerrequisitos]]
-const ramosPorSemestre = {
-  "Primer semestre": [
-    ["Química General y Orgánica", "DQUI1050", []],
-    ["Morfología Básica", "DMOR0030", []],
-    ["Antropología", "FORI0001", []],
-    ["Biología Celular", "DBIO1084", []],
-    ["Bases de la Enfermería y su Rol en el Liderazgo", "ENFEA003", []],
-    ["Psicología Evolutiva", "ENFEA004", []]
-  ],
-  "Segundo semestre": [
-    ["Bioquímica General", "DBIO1092", ["DQUI1050"]],
-    ["Microbiología General", "DBIO1097", ["DBIO1084"]],
-    ["Integrado Fisiología-Fisiopatología 1", "DMOR0022", ["DBIO1084"]],
-    ["Salud Digital", "FACU0004", []],
-    ["IAAS (Calidad y Seguridad)", "ENFEB003", []],
-    ["Salud Intercultural", "ENFEB004", []]
-  ],
-  "Tercer semestre": [
-    ["Integrado Fisiología-Fisiopatología 2", "DMOR0023", ["DMOR0022"]],
-    ["Farmacología General", "BDIO1098", ["DMOR0022"]],
-    ["Salud Poblacional", "DSPU0012", []],
-    ["Enfermería en el Curso de la Vida", "ENFEC004", []],
-    ["Educación para la Salud", "ENFEC005", []],
-    ["Comunicación Interdisciplinar", "ENFEC006", []]
-  ]
-  // Puedes seguir agregando los siguientes semestres aquí...
-};
+let mallaData = [];
+let estructuraPorAnio = [];
 
-// Estados
-let aprobados = new Set();
-let desbloqueados = new Set();
+async function cargarMalla() {
+  const res = await fetch('malla.json');
+  const data = await res.json();
+  mallaData = data.mallaData;
+  estructuraPorAnio = data.estructuraPorAnio;
+  poblarAnios(data.cantidadAnios);
+}
 
-// Elementos DOM
-const malla = document.getElementById("malla");
-const detalle = document.getElementById("detalle");
-
-// Inicializar desbloqueados (sin prerrequisitos)
-function inicializarDesbloqueados() {
-  desbloqueados.clear();
-  for (const sem in ramosPorSemestre) {
-    for (const [nombre, codigo, prereqs] of ramosPorSemestre[sem]) {
-      if (prereqs.length === 0) desbloqueados.add(codigo);
-    }
+function poblarAnios(cantidad) {
+  const select = document.getElementById("selectAnio");
+  for (let i = 1; i <= cantidad; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = `Año ${i}`;
+    select.appendChild(option);
   }
+  select.addEventListener("change", (e) => mostrarMallaPorAnio(e.target.value));
 }
 
-// Verificar si todos los prerrequisitos de un ramo están aprobados
-function prerrequisitosAprobados(prereqs) {
-  return prereqs.every(cod => aprobados.has(cod));
-}
+function mostrarMallaPorAnio(anioSeleccionado) {
+  const container = document.getElementById("mallaContainer");
+  container.innerHTML = '';
 
-// Actualizar lista de ramos desbloqueados
-function actualizarDesbloqueados() {
-  let cambio = false;
-  for (const semestre in ramosPorSemestre) {
-    for (const [nombre, codigo, prereqs] of ramosPorSemestre[semestre]) {
-      if (!desbloqueados.has(codigo) && prerrequisitosAprobados(prereqs)) {
-        desbloqueados.add(codigo);
-        cambio = true;
-      }
-    }
-  }
-  if (cambio) renderMalla(); // Re-render si hay cambios
-}
+  const periodos = mallaData.filter((e) => e.año == anioSeleccionado && e.materias.length > 0);
+  periodos.forEach(periodo => {
+    const divPeriodo = document.createElement("div");
+    divPeriodo.className = "periodo";
+    divPeriodo.innerHTML = `<h3>${periodo.periodo}</h3>`;
 
-// Crear un ramo como tarjeta DOM
-function crearTarjeta(nombre, codigo, prereqs) {
-  const div = document.createElement("div");
-  div.className = "ramo";
-  div.textContent = `${nombre}\n(${codigo})`;
+    periodo.materias.forEach(materia => {
+      const divMateria = document.createElement("div");
+      divMateria.className = "materia";
+      divMateria.innerHTML = `
+        <strong>${materia.nombre}</strong> (${materia.creditos} créditos)<br/>
+        ${materia.requisitos.length > 0 ? "<em>Requiere:</em> " + materia.requisitos.length + " asignatura(s)" : "<em>Sin requisitos</em>"}
+      `;
+      divPeriodo.appendChild(divMateria);
+    });
 
-  // Bloqueado
-  if (!desbloqueados.has(codigo)) div.classList.add("bloqueado");
-
-  // Aprobado
-  if (aprobados.has(codigo)) div.classList.add("aprobado");
-
-  // Evento clic
-  div.addEventListener("click", () => {
-    if (!aprobados.has(codigo)) {
-      aprobados.add(codigo);
-      actualizarDesbloqueados();
-      renderMalla();
-      mostrarDetalle(nombre, codigo, prereqs);
-    } else {
-      mostrarDetalle(nombre, codigo, prereqs);
-    }
+    container.appendChild(divPeriodo);
   });
-
-  return div;
 }
 
-// Mostrar detalle de un ramo
-function mostrarDetalle(nombre, codigo, prereqs) {
-  detalle.classList.remove("hidden");
-  const requisitos = prereqs.length > 0 ? prereqs.join(", ") : "Ninguno";
-  detalle.innerHTML = `
-    <strong>${nombre} (${codigo})</strong><br>
-    Estado: ${aprobados.has(codigo) ? "✅ Aprobado" : "⏳ Pendiente"}<br>
-    Prerrequisitos: ${requisitos}
-  `;
-}
-
-// Renderizar la malla completa
-function renderMalla() {
-  malla.innerHTML = "";
-  for (const semestre in ramosPorSemestre) {
-    const contenedor = document.createElement("div");
-    contenedor.className = "semestre";
-
-    const titulo = document.createElement("h2");
-    titulo.textContent = semestre;
-    contenedor.appendChild(titulo);
-
-    const contenedorRamos = document.createElement("div");
-    contenedorRamos.className = "ramos";
-
-    for (const [nombre, codigo, prereqs] of ramosPorSemestre[semestre]) {
-      const tarjeta = crearTarjeta(nombre, codigo, prereqs);
-      contenedorRamos.appendChild(tarjeta);
-    }
-
-    contenedor.appendChild(contenedorRamos);
-    malla.appendChild(contenedor);
-  }
-}
-
-// Inicializar
-inicializarDesbloqueados();
-renderMalla();
+cargarMalla();
