@@ -1,3 +1,5 @@
+// script.js
+
 let malla = [];
 let materiasPorId = {};
 let completadas = JSON.parse(localStorage.getItem("materiasCompletadas") || "[]");
@@ -7,7 +9,7 @@ async function cargarMalla() {
   const data = await res.json();
   malla = data.mallaData;
 
-  // Mapear materias por ID
+  // Indexar materias por ID
   malla.forEach(periodo => {
     periodo.materias.forEach(m => {
       materiasPorId[m.id] = m;
