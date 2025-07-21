@@ -44,12 +44,9 @@ async function cargarMalla() {
                              materia.requisitos.every(req => materiasCompletadas.includes(req));
 
           if (completada) matDiv.classList.add('completed');
-          if (!habilitada && !completada) matDiv.classList.add('disabled');
+          if (!habilitada && !completada) {
+            matDiv.classList.add('disabled');
 
-          matDiv.onclick = () => toggleMateria(materia);
-
-          // Tooltip personalizada al pasar el mouse
-          if (materia.requisitos.length > 0 && !habilitada) {
             const requisitosNombres = materia.requisitos.map(id => idToNombre[id]).join('\\n');
 
             matDiv.addEventListener('mouseenter', (e) => {
@@ -67,6 +64,7 @@ async function cargarMalla() {
             });
           }
 
+          matDiv.onclick = () => toggleMateria(materia);
           div.appendChild(matDiv);
         });
 
@@ -78,7 +76,7 @@ async function cargarMalla() {
   });
 
   function moveTooltip(e) {
-    tooltip.style.top = `${e.pageY + 15}px`;
+    tooltip.style.top = `${e.pageY + 10}px`;
     tooltip.style.left = `${e.pageX + 15}px`;
   }
 }
