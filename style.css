@@ -106,3 +106,12 @@ footer {
   font-family: 'Georgia', serif;
   font-style: italic;
 }
+.materia.disabled {
+  background-color: #eaeaea;
+  color: #aaa;
+  border: 1px dashed #ccc;
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.7;
+}
+
