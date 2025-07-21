@@ -116,21 +116,23 @@ footer {
 }
 .tooltip {
   position: absolute;
-  background: #f5eaff;
-  color: #6a4b84;
-  border: 1px solid #dabdfc;
-  padding: 0.5rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  pointer-events: none;
-  white-space: pre-line;
-  z-index: 100;
-  max-width: 250px;
-  font-family: 'Dancing Script', cursive;
   display: none;
+  background: #fcecff;
+  color: #6b4c89;
+  padding: 0.6rem 1rem;
+  border: 1px solid #dabdfc;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: 'Dancing Script', cursive;
+  white-space: pre-line;
+  z-index: 1000;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  max-width: 250px;
+  pointer-events: none;
+  opacity: 0.95;
   transition: opacity 0.2s ease-in-out;
 }
+
 
 
 
