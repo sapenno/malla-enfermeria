@@ -4,8 +4,8 @@ async function cargarMalla() {
   const res = await fetch('malla.json');
   const data = await res.json();
   const contenedor = document.getElementById('malla-container');
+  const tooltip = document.getElementById('tooltip');
 
-  // Mapa para mostrar nombres de los requisitos
   const idToNombre = {};
   data.mallaData.forEach(bloque =>
     bloque.materias.forEach(m =>
@@ -38,18 +38,33 @@ async function cargarMalla() {
           matDiv.className = 'materia';
           matDiv.textContent = materia.nombre;
           matDiv.dataset.id = materia.id;
-          matDiv.onclick = () => toggleMateria(materia);
 
           const completada = materiasCompletadas.includes(materia.id);
           const habilitada = materia.requisitos.length === 0 ||
                              materia.requisitos.every(req => materiasCompletadas.includes(req));
 
           if (completada) matDiv.classList.add('completed');
-          if (!habilitada && !completada) {
-            matDiv.classList.add('disabled');
+          if (!habilitada && !completada) matDiv.classList.add('disabled');
 
-            const requisitosNombres = materia.requisitos.map(id => idToNombre[id]).join(', ');
-            matDiv.title = "Requiere: " + requisitosNombres;
+          matDiv.onclick = () => toggleMateria(materia);
+
+          // Tooltip personalizada al pasar el mouse
+          if (materia.requisitos.length > 0 && !habilitada) {
+            const requisitosNombres = materia.requisitos.map(id => idToNombre[id]).join('\\n');
+
+            matDiv.addEventListener('mouseenter', (e) => {
+              tooltip.style.display = 'block';
+              tooltip.textContent = 'Requiere:\n' + requisitosNombres;
+              moveTooltip(e);
+            });
+
+            matDiv.addEventListener('mousemove', (e) => {
+              moveTooltip(e);
+            });
+
+            matDiv.addEventListener('mouseleave', () => {
+              tooltip.style.display = 'none';
+            });
           }
 
           div.appendChild(matDiv);
@@ -61,6 +76,11 @@ async function cargarMalla() {
 
     contenedor.appendChild(columna);
   });
+
+  function moveTooltip(e) {
+    tooltip.style.top = `${e.pageY + 15}px`;
+    tooltip.style.left = `${e.pageX + 15}px`;
+  }
 }
 
 function toggleMateria(materia) {
