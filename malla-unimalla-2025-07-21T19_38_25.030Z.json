@@ -1,0 +1,679 @@
+{
+  "mallaData": [
+    {
+      "año": 1,
+      "periodo": "anual",
+      "materias": []
+    },
+    {
+      "año": 1,
+      "periodo": "Primer Semestre",
+      "materias": [
+        {
+          "id": "e701f477-e8e2-4820-bf2b-411a6e9a9bf8",
+          "nombre": "Química General y Orgánica",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 7,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "e5addc63-2396-4895-b47b-b834ff672249",
+          "nombre": "Morfología Básica",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "08fbc27f-e9f8-4ec7-b487-e6048cfe6aee",
+          "nombre": "Antropología",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "f7ba92a8-f512-4214-85fd-bc37576cd679",
+          "nombre": "Biología Celular",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "53359828-51d0-4328-80a4-e62af906d2e2",
+          "nombre": "Bases de la Enfermería y su Rol en el Liderazgo",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "84963faf-6e14-4aff-8cf8-0083709b1d17",
+          "nombre": "Psicología Evolutiva",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 5,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 1,
+      "periodo": "Segundo Semestre",
+      "materias": [
+        {
+          "id": "cb482a59-bc4f-4367-9c6a-6f8881494e5b",
+          "nombre": "Bioquímica General",
+          "tipo": "ninguno",
+          "requisitos": [
+            "e701f477-e8e2-4820-bf2b-411a6e9a9bf8"
+          ],
+          "creditos": 7,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "d1deb6eb-f607-49c3-81b9-ba1cde385890",
+          "nombre": "Microbiología General",
+          "tipo": "ninguno",
+          "requisitos": [
+            "f7ba92a8-f512-4214-85fd-bc37576cd679"
+          ],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "376d60c0-b803-4f38-8a64-61c150315f4d",
+          "nombre": "Integrado Fisiología - Fisiopatología I",
+          "tipo": "ninguno",
+          "requisitos": [
+            "f7ba92a8-f512-4214-85fd-bc37576cd679"
+          ],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "dd146837-8fa5-4e7b-888f-8879a1044ee7",
+          "nombre": "Salud Digital",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "9e6bb0a9-9016-4232-bcdb-c97efc04d72e",
+          "nombre": "Calidad, Seguridad y Prevención de Infecciones Asociadas a la Atención en Salud (IAAS)",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 6,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "e90cd159-c31b-4957-8c1f-44b832603fdf",
+          "nombre": "Salud Intercultural",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 2,
+      "periodo": "anual",
+      "materias": []
+    },
+    {
+      "año": 2,
+      "periodo": "Primer Semestre",
+      "materias": [
+        {
+          "id": "91272486-fb1f-4bf5-969a-d2c689985f37",
+          "nombre": "Integrado de Fisiología - Fisiopatología II",
+          "tipo": "ninguno",
+          "requisitos": [
+            "376d60c0-b803-4f38-8a64-61c150315f4d"
+          ],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "2252200b-75d8-48a2-bcd8-1f681165c285",
+          "nombre": "Farmacología General",
+          "tipo": "ninguno",
+          "requisitos": [
+            "376d60c0-b803-4f38-8a64-61c150315f4d"
+          ],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "f8f31272-7226-42b4-a232-9bea1c395e49",
+          "nombre": "Salud Poblacional",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "60a6452c-952f-45c5-a88d-347a5adf3434",
+          "nombre": "Enfermería en el Curso de Vida",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 7,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "e7fc6c62-8054-4e68-941d-cef88ed48d5c",
+          "nombre": "Educación para la Salud",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "c6e2f493-e945-4e65-88d4-32c07f66cf91",
+          "nombre": "Comunicación Interdisciplinar ",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 2,
+      "periodo": "Segundo Semestre",
+      "materias": [
+        {
+          "id": "e3728dee-fac2-4989-a96d-3317b23cf441",
+          "nombre": "Gestión del Cuidado del Adulto I",
+          "tipo": "ninguno",
+          "requisitos": [
+            "60a6452c-952f-45c5-a88d-347a5adf3434"
+          ],
+          "creditos": 13,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "3327476b-ce51-492c-9af0-16a420a67467",
+          "nombre": "Ética",
+          "tipo": "ninguno",
+          "requisitos": [
+            "08fbc27f-e9f8-4ec7-b487-e6048cfe6aee"
+          ],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "deb967a3-9adb-455d-a712-84be1955b880",
+          "nombre": "Bases de Práctica Basada en Evidencia",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "44f36d4b-5309-4d42-9d7e-ddeb7c6a0047",
+          "nombre": "Administración para la Gestión del Cuidado",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "b0217f01-141d-4906-aa4b-0af71718c1d2",
+          "nombre": "Hito Evaluativo Integrativo",
+          "tipo": "ninguno",
+          "requisitos": [
+            "cb482a59-bc4f-4367-9c6a-6f8881494e5b",
+            "d1deb6eb-f607-49c3-81b9-ba1cde385890",
+            "376d60c0-b803-4f38-8a64-61c150315f4d",
+            "dd146837-8fa5-4e7b-888f-8879a1044ee7",
+            "9e6bb0a9-9016-4232-bcdb-c97efc04d72e",
+            "e90cd159-c31b-4957-8c1f-44b832603fdf",
+            "91272486-fb1f-4bf5-969a-d2c689985f37",
+            "2252200b-75d8-48a2-bcd8-1f681165c285",
+            "f8f31272-7226-42b4-a232-9bea1c395e49",
+            "60a6452c-952f-45c5-a88d-347a5adf3434",
+            "e7fc6c62-8054-4e68-941d-cef88ed48d5c",
+            "c6e2f493-e945-4e65-88d4-32c07f66cf91"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 3,
+      "periodo": "anual",
+      "materias": []
+    },
+    {
+      "año": 3,
+      "periodo": "Primer Semestre",
+      "materias": [
+        {
+          "id": "6cabd2a0-1019-4937-a5d6-8f6d42366610",
+          "nombre": "Persona y Sociedad",
+          "tipo": "ninguno",
+          "requisitos": [
+            "3327476b-ce51-492c-9af0-16a420a67467"
+          ],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "80ab128c-a482-40f7-bf4f-450dce1f5740",
+          "nombre": "Gestión del Cuidado del Adulto II",
+          "tipo": "ninguno",
+          "requisitos": [
+            "e3728dee-fac2-4989-a96d-3317b23cf441"
+          ],
+          "creditos": 11,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "6756a814-6ec5-4c72-a7ce-05194c7b2ade",
+          "nombre": "Bioestadística y Salud",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "433d185a-4982-415c-8d30-bc2de000413f",
+          "nombre": "Epidemiología",
+          "tipo": "ninguno",
+          "requisitos": [
+            "f8f31272-7226-42b4-a232-9bea1c395e49"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "9eb2c4b8-ff72-4166-ad81-b7ae2e14a372",
+          "nombre": "Medio Ambiente, Salud y Enfermería",
+          "tipo": "ninguno",
+          "requisitos": [
+            "44f36d4b-5309-4d42-9d7e-ddeb7c6a0047"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "3eb62eed-ed43-4e8b-9217-83a12417db0f",
+          "nombre": "Gestión de Proyectos en Salud",
+          "tipo": "ninguno",
+          "requisitos": [
+            "44f36d4b-5309-4d42-9d7e-ddeb7c6a0047"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 3,
+      "periodo": "Segundo Semestre",
+      "materias": [
+        {
+          "id": "7893d532-1d12-4313-8d7b-93909ff391f1",
+          "nombre": "Electivo I: Formación Integral",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "20f03aef-b909-4220-8201-7838f423f0d6",
+          "nombre": "Gestión del Cuidado en la Persona Mayor",
+          "tipo": "ninguno",
+          "requisitos": [
+            "80ab128c-a482-40f7-bf4f-450dce1f5740"
+          ],
+          "creditos": 10,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "103bd26e-ee2a-4e21-a62b-c01f34153d48",
+          "nombre": "Enfermería en Salud Mental y Psiquiatria",
+          "tipo": "ninguno",
+          "requisitos": [
+            "80ab128c-a482-40f7-bf4f-450dce1f5740"
+          ],
+          "creditos": 10,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "3a76e2ff-8c51-420f-9081-7b20cb01c7f9",
+          "nombre": "Liderazgo y Toma de Decisiones en Salud",
+          "tipo": "ninguno",
+          "requisitos": [
+            "3eb62eed-ed43-4e8b-9217-83a12417db0f"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "05d961e3-10f3-4345-8cfe-38440a2d2888",
+          "nombre": "Metodología de la Investigación",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 3,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 4,
+      "periodo": "anual",
+      "materias": []
+    },
+    {
+      "año": 4,
+      "periodo": "Primer Semestre",
+      "materias": [
+        {
+          "id": "0ff07b70-0537-4e70-ad23-66d7effe48e1",
+          "nombre": "Electivo II: Formación Integral",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "7bd723b7-4f85-4f3e-a6b7-7267b61e207e",
+          "nombre": "Gestión del Cuidado en la Niñez y Adolescencia",
+          "tipo": "ninguno",
+          "requisitos": [
+            "80ab128c-a482-40f7-bf4f-450dce1f5740"
+          ],
+          "creditos": 10,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "c32b38b3-8a8d-4894-8b81-314379b1ae38",
+          "nombre": "Enfermería en Salud Familiar y Comunitaria",
+          "tipo": "ninguno",
+          "requisitos": [
+            "103bd26e-ee2a-4e21-a62b-c01f34153d48"
+          ],
+          "creditos": 8,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "b91aae71-0751-4dfa-b930-b54bb4dc080e",
+          "nombre": "Gerencia y Gobernanza para la Gestión en Salud",
+          "tipo": "ninguno",
+          "requisitos": [
+            "3a76e2ff-8c51-420f-9081-7b20cb01c7f9"
+          ],
+          "creditos": 2,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "970d9648-ac92-48c6-82d3-1f072510d6b6",
+          "nombre": "Bioética",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "c878f496-fc87-48cd-b157-40f5e3d8652b",
+          "nombre": "Proyecto de Investigación",
+          "tipo": "ninguno",
+          "requisitos": [
+            "05d961e3-10f3-4345-8cfe-38440a2d2888"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 4,
+      "periodo": "Segundo Semestre",
+      "materias": [
+        {
+          "id": "44371baf-c52d-4562-adfe-cc0352240f54",
+          "nombre": "Electivo III: Formación Integral",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "c2843544-1f20-4d7a-bf7c-7ca321168f07",
+          "nombre": "Enfermería de Urgencia",
+          "tipo": "ninguno",
+          "requisitos": [
+            "7bd723b7-4f85-4f3e-a6b7-7267b61e207e"
+          ],
+          "creditos": 10,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "e72b13a9-c4c8-480f-99ee-338f0fc03b41",
+          "nombre": "Enfermería en Oncología y Cuidados Paliativos",
+          "tipo": "ninguno",
+          "requisitos": [
+            "c32b38b3-8a8d-4894-8b81-314379b1ae38"
+          ],
+          "creditos": 5,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "e79beda6-738b-4e0b-a8c6-93bbe88bd9a3",
+          "nombre": "Liderazgo para la Gestión del Cambio en Equipos de Salud",
+          "tipo": "ninguno",
+          "requisitos": [
+            "b91aae71-0751-4dfa-b930-b54bb4dc080e"
+          ],
+          "creditos": 3,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "3575254a-48a5-4775-9570-0dbee0a4f893",
+          "nombre": "Práctica Basada en la Evidencia",
+          "tipo": "ninguno",
+          "requisitos": [
+            "c878f496-fc87-48cd-b157-40f5e3d8652b"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "d4469169-0f21-48c7-a447-ba1b9120b9e5",
+          "nombre": "Hito Evaluativo Integrativo Interprofesional",
+          "tipo": "ninguno",
+          "requisitos": [
+            "7893d532-1d12-4313-8d7b-93909ff391f1",
+            "20f03aef-b909-4220-8201-7838f423f0d6",
+            "103bd26e-ee2a-4e21-a62b-c01f34153d48",
+            "3a76e2ff-8c51-420f-9081-7b20cb01c7f9",
+            "05d961e3-10f3-4345-8cfe-38440a2d2888",
+            "0ff07b70-0537-4e70-ad23-66d7effe48e1",
+            "7bd723b7-4f85-4f3e-a6b7-7267b61e207e",
+            "c32b38b3-8a8d-4894-8b81-314379b1ae38",
+            "b91aae71-0751-4dfa-b930-b54bb4dc080e",
+            "970d9648-ac92-48c6-82d3-1f072510d6b6",
+            "c878f496-fc87-48cd-b157-40f5e3d8652b"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 5,
+      "periodo": "anual",
+      "materias": []
+    },
+    {
+      "año": 5,
+      "periodo": "Primer Semestre",
+      "materias": [
+        {
+          "id": "3650ab7f-01f7-46fd-88a5-a2ac86a503a0",
+          "nombre": "Gestión de Carrera y Desarrollo Profesional",
+          "tipo": "ninguno",
+          "requisitos": [],
+          "creditos": 4,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "71e947a5-d0ca-467c-ab91-b868102b6735",
+          "nombre": "Internado Clínico Asistencial",
+          "tipo": "ninguno",
+          "requisitos": [
+            "44371baf-c52d-4562-adfe-cc0352240f54",
+            "0ff07b70-0537-4e70-ad23-66d7effe48e1",
+            "7bd723b7-4f85-4f3e-a6b7-7267b61e207e",
+            "c32b38b3-8a8d-4894-8b81-314379b1ae38",
+            "b91aae71-0751-4dfa-b930-b54bb4dc080e",
+            "970d9648-ac92-48c6-82d3-1f072510d6b6",
+            "c878f496-fc87-48cd-b157-40f5e3d8652b",
+            "c2843544-1f20-4d7a-bf7c-7ca321168f07",
+            "e72b13a9-c4c8-480f-99ee-338f0fc03b41",
+            "e79beda6-738b-4e0b-a8c6-93bbe88bd9a3",
+            "3575254a-48a5-4775-9570-0dbee0a4f893",
+            "d4469169-0f21-48c7-a447-ba1b9120b9e5"
+          ],
+          "creditos": 20,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "79d2bb58-9635-449d-9f3a-8ac5e4379a16",
+          "nombre": "Electivo I",
+          "tipo": "ninguno",
+          "requisitos": [
+            "0ff07b70-0537-4e70-ad23-66d7effe48e1",
+            "7bd723b7-4f85-4f3e-a6b7-7267b61e207e",
+            "c32b38b3-8a8d-4894-8b81-314379b1ae38",
+            "b91aae71-0751-4dfa-b930-b54bb4dc080e",
+            "970d9648-ac92-48c6-82d3-1f072510d6b6",
+            "c878f496-fc87-48cd-b157-40f5e3d8652b",
+            "44371baf-c52d-4562-adfe-cc0352240f54",
+            "e72b13a9-c4c8-480f-99ee-338f0fc03b41",
+            "c2843544-1f20-4d7a-bf7c-7ca321168f07",
+            "e79beda6-738b-4e0b-a8c6-93bbe88bd9a3",
+            "3575254a-48a5-4775-9570-0dbee0a4f893",
+            "d4469169-0f21-48c7-a447-ba1b9120b9e5"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    },
+    {
+      "año": 5,
+      "periodo": "Segundo Semestre",
+      "materias": [
+        {
+          "id": "72d49881-f88b-4e00-96cf-378df48d7a6d",
+          "nombre": "Internado en Salud Familiar y Comunitaria",
+          "tipo": "ninguno",
+          "requisitos": [
+            "0ff07b70-0537-4e70-ad23-66d7effe48e1",
+            "7bd723b7-4f85-4f3e-a6b7-7267b61e207e",
+            "c32b38b3-8a8d-4894-8b81-314379b1ae38",
+            "b91aae71-0751-4dfa-b930-b54bb4dc080e",
+            "970d9648-ac92-48c6-82d3-1f072510d6b6",
+            "c878f496-fc87-48cd-b157-40f5e3d8652b",
+            "44371baf-c52d-4562-adfe-cc0352240f54",
+            "c2843544-1f20-4d7a-bf7c-7ca321168f07",
+            "e72b13a9-c4c8-480f-99ee-338f0fc03b41",
+            "e79beda6-738b-4e0b-a8c6-93bbe88bd9a3",
+            "3575254a-48a5-4775-9570-0dbee0a4f893",
+            "d4469169-0f21-48c7-a447-ba1b9120b9e5"
+          ],
+          "creditos": 20,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "c3f48ed9-4dfe-4321-a727-73f205421044",
+          "nombre": "Internado en Gestión en Salud",
+          "tipo": "ninguno",
+          "requisitos": [
+            "0ff07b70-0537-4e70-ad23-66d7effe48e1",
+            "7bd723b7-4f85-4f3e-a6b7-7267b61e207e",
+            "c32b38b3-8a8d-4894-8b81-314379b1ae38",
+            "b91aae71-0751-4dfa-b930-b54bb4dc080e",
+            "970d9648-ac92-48c6-82d3-1f072510d6b6",
+            "c878f496-fc87-48cd-b157-40f5e3d8652b",
+            "44371baf-c52d-4562-adfe-cc0352240f54",
+            "c2843544-1f20-4d7a-bf7c-7ca321168f07",
+            "e72b13a9-c4c8-480f-99ee-338f0fc03b41",
+            "e79beda6-738b-4e0b-a8c6-93bbe88bd9a3",
+            "3575254a-48a5-4775-9570-0dbee0a4f893",
+            "d4469169-0f21-48c7-a447-ba1b9120b9e5"
+          ],
+          "creditos": 8,
+          "requiereCreditos": 0
+        },
+        {
+          "id": "ad7313e6-0783-4ef6-aac1-d2973111996c",
+          "nombre": "Electivo II",
+          "tipo": "ninguno",
+          "requisitos": [
+            "0ff07b70-0537-4e70-ad23-66d7effe48e1",
+            "7bd723b7-4f85-4f3e-a6b7-7267b61e207e",
+            "c32b38b3-8a8d-4894-8b81-314379b1ae38",
+            "b91aae71-0751-4dfa-b930-b54bb4dc080e",
+            "970d9648-ac92-48c6-82d3-1f072510d6b6",
+            "c878f496-fc87-48cd-b157-40f5e3d8652b",
+            "44371baf-c52d-4562-adfe-cc0352240f54",
+            "c2843544-1f20-4d7a-bf7c-7ca321168f07",
+            "e72b13a9-c4c8-480f-99ee-338f0fc03b41",
+            "e79beda6-738b-4e0b-a8c6-93bbe88bd9a3",
+            "3575254a-48a5-4775-9570-0dbee0a4f893",
+            "d4469169-0f21-48c7-a447-ba1b9120b9e5"
+          ],
+          "creditos": 4,
+          "requiereCreditos": 0
+        }
+      ]
+    }
+  ],
+  "estructuraPorAnio": [
+    {
+      "tipo": "semestral",
+      "periodos": [
+        "Primer Semestre",
+        "Segundo Semestre"
+      ]
+    },
+    {
+      "tipo": "semestral",
+      "periodos": [
+        "Primer Semestre",
+        "Segundo Semestre"
+      ]
+    },
+    {
+      "tipo": "semestral",
+      "periodos": [
+        "Primer Semestre",
+        "Segundo Semestre"
+      ]
+    },
+    {
+      "tipo": "semestral",
+      "periodos": [
+        "Primer Semestre",
+        "Segundo Semestre"
+      ]
+    },
+    {
+      "tipo": "semestral",
+      "periodos": [
+        "Primer Semestre",
+        "Segundo Semestre"
+      ]
+    }
+  ],
+  "cantidadAnios": 5
+}
