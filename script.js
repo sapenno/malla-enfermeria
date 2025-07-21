@@ -1,92 +1,40 @@
-let malla = [];
-let materiasPorId = {};
-let completadas = JSON.parse(localStorage.getItem("materiasCompletadas") || "[]");
+let materiasCompletadas = JSON.parse(localStorage.getItem('materiasCompletadas')) || [];
 
 async function cargarMalla() {
-  const res = await fetch("malla.json");
+  const res = await fetch('malla.json');
   const data = await res.json();
-  malla = data.mallaData;
-
-  // Mapear materias por ID
-  malla.forEach(periodo => {
-    periodo.materias.forEach(m => {
-      materiasPorId[m.id] = m;
-    });
-  });
-
-  renderMalla();
-}
-
-function guardarProgreso() {
-  localStorage.setItem("materiasCompletadas", JSON.stringify(completadas));
-}
-
-function estaDesbloqueada(materia) {
-  return materia.requisitos.every(reqId => completadas.includes(reqId));
-}
-
-function toggleMateria(id) {
-  const idx = completadas.indexOf(id);
-  if (idx >= 0) {
-    completadas.splice(idx, 1);
-  } else {
-    completadas.push(id);
-  }
-  guardarProgreso();
-  renderMalla();
-}
-
-function tooltipRequisitos(materia) {
-  if (!materia.requisitos.length) return "Sin requisitos";
-  return "Requiere:\n" + materia.requisitos.map(id => materiasPorId[id]?.nombre || "???").join("\n");
-}
-
-function renderMalla() {
-  const container = document.getElementById("mallaContainer");
-  container.innerHTML = "";
-
-  const años = [...new Set(malla.map(e => e.año))];
-
-  años.forEach(anio => {
-    const anioDiv = document.createElement("div");
-    anioDiv.className = "anio";
-    anioDiv.innerHTML = `<h2>Año ${anio}</h2>`;
-
-    const filaPeriodos = document.createElement("div");
-    filaPeriodos.className = "periodos";
-
-    const periodos = malla.filter(p => p.año === anio && p.materias.length > 0);
-    periodos.forEach(p => {
-      const periodoDiv = document.createElement("div");
-      periodoDiv.className = "periodo";
-      periodoDiv.innerHTML = `<h3>${p.periodo}</h3>`;
-
-      p.materias.forEach(m => {
-        const div = document.createElement("div");
-        div.className = "materia";
-        div.textContent = `${m.nombre} (${m.creditos} créditos)`;
-        div.setAttribute("data-tooltip", tooltipRequisitos(m));
-
-        const completada = completadas.includes(m.id);
-        const desbloqueada = estaDesbloqueada(m);
-
-        if (completada) {
-          div.classList.add("completed");
-        } else if (!desbloqueada && m.requisitos.length > 0) {
-          div.classList.add("locked");
-        } else {
-          div.addEventListener("click", () => toggleMateria(m.id));
+  const contenedor = document.getElementById('malla-container');
+  data.mallaData.forEach((bloque) => {
+    if (bloque.materias.length > 0) {
+      const div = document.createElement('div');
+      div.className = 'semestre';
+      div.innerHTML = `<h2>${bloque.año}° Año - ${bloque.periodo}</h2>`;
+      bloque.materias.forEach((materia) => {
+        const matDiv = document.createElement('div');
+        matDiv.className = 'materia';
+        matDiv.textContent = materia.nombre;
+        matDiv.dataset.id = materia.id;
+        matDiv.onclick = () => toggleMateria(materia);
+        if (materiasCompletadas.includes(materia.id)) {
+          matDiv.classList.add('completed');
         }
-
-        periodoDiv.appendChild(div);
+        if (materia.requisitos.length === 0 || materia.requisitos.every(req => materiasCompletadas.includes(req))) {
+          div.appendChild(matDiv);
+        }
       });
-
-      filaPeriodos.appendChild(periodoDiv);
-    });
-
-    anioDiv.appendChild(filaPeriodos);
-    container.appendChild(anioDiv);
+      contenedor.appendChild(div);
+    }
   });
 }
 
-cargarMalla();
+function toggleMateria(materia) {
+  if (materiasCompletadas.includes(materia.id)) {
+    materiasCompletadas = materiasCompletadas.filter(id => id !== materia.id);
+  } else {
+    materiasCompletadas.push(materia.id);
+  }
+  localStorage.setItem('materiasCompletadas', JSON.stringify(materiasCompletadas));
+  location.reload();
+}
+
+document.addEventListener('DOMContentLoaded', cargarMalla);
