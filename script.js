@@ -33,7 +33,10 @@ async function cargarMalla() {
           if (materiasCompletadas.includes(materia.id)) {
             matDiv.classList.add('completed');
           }
-          if (materia.requisitos.length === 0 || materia.requisitos.every(req => materiasCompletadas.includes(req))) {
+          if (
+            materia.requisitos.length === 0 ||
+            materia.requisitos.every((req) => materiasCompletadas.includes(req))
+          ) {
             div.appendChild(matDiv);
           }
         });
